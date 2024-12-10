@@ -10,6 +10,8 @@ pub struct SearchRequest {
     pub msgid: i32,
     pub base: String,
     pub scope: LdapSearchScope,
+    pub sizelimit: i32,
+    pub timelimit: i32,
     pub filter: LdapFilter,
     pub attrs: Vec<String>,
 }
@@ -76,8 +78,8 @@ impl TryFrom<LdapMsg> for ServerOps {
                     base,
                     scope,
                     aliases: _,
-                    sizelimit: _,
-                    timelimit: _,
+                    sizelimit,
+                    timelimit,
                     typesonly: _,
                     filter,
                     attrs,
@@ -86,6 +88,8 @@ impl TryFrom<LdapMsg> for ServerOps {
                     msgid,
                     base,
                     scope,
+                    sizelimit,
+                    timelimit,
                     filter,
                     attrs,
                 }))
